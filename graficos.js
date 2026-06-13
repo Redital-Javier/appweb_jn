@@ -132,6 +132,12 @@ function graficoAportadoGastado(aportes, gastos) {
         return;
     }
 
+    const datosAportado = claves.map(function (c) { return meses[c].aportado; });
+    const datosGastado = claves.map(function (c) { return meses[c].gastado; });
+
+    const tope = Math.max.apply(null, datosAportado.concat(datosGastado));
+    const minimoBarra = tope > 0 ? tope * 0.015 : 0;
+
     new Chart(document.getElementById('gAporteGasto'), {
         type: 'bar',
         data: {
@@ -139,7 +145,8 @@ function graficoAportadoGastado(aportes, gastos) {
             datasets: [
                 {
                     label: 'Aportado',
-                    data: claves.map(function (c) { return meses[c].aportado; }),
+                    data: datosAportado.map(function (v) { return v > 0 ? v : minimoBarra; }),
+                    realData: datosAportado,
                     backgroundColor: function (c) { return gradiente(c, colorCyanOscuro, colorCyan, false); },
                     borderRadius: 8,
                     borderSkipped: false,
@@ -150,12 +157,13 @@ function graficoAportadoGastado(aportes, gastos) {
                         offset: 4,
                         color: colorCyan,
                         font: { weight: '400', size: 11 },
-                        formatter: function (v) { return v > 0 ? pesosCorto(v) : ''; }
+                        formatter: function (v, ctx) { return pesosCorto(ctx.dataset.realData[ctx.dataIndex]); }
                     }
                 },
                 {
                     label: 'Gastado',
-                    data: claves.map(function (c) { return meses[c].gastado; }),
+                    data: datosGastado.map(function (v) { return v > 0 ? v : minimoBarra; }),
+                    realData: datosGastado,
                     backgroundColor: function (c) { return gradiente(c, colorRojoOscuro, colorRojo, false); },
                     borderRadius: 8,
                     borderSkipped: false,
@@ -166,7 +174,7 @@ function graficoAportadoGastado(aportes, gastos) {
                         offset: 4,
                         color: colorRojo,
                         font: { weight: '400', size: 11 },
-                        formatter: function (v) { return v > 0 ? pesosCorto(v) : ''; }
+                        formatter: function (v, ctx) { return pesosCorto(ctx.dataset.realData[ctx.dataIndex]); }
                     }
                 }
             ]
