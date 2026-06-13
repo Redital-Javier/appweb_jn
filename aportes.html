@@ -21,8 +21,8 @@
                 <a href="index.html" class="tab">Resumen</a>
                 <a href="graficos.html" class="tab">Dashboard</a>
                 <a href="personas.html" class="tab">Personas</a>
-                <a href="aportes.html" class="tab">Aportes</a>
-                <a href="gastos.html" class="tab activa">Gastos</a>
+                <a href="aportes.html" class="tab activa">Aportes</a>
+                <a href="gastos.html" class="tab">Gastos</a>
             </nav>
         </header>
 
@@ -48,26 +48,11 @@
                     <button id="btnLogout" class="sesion-cerrar">Cerrar sesión</button>
                 </div>
 
-                <div class="titulo">Nuevo gasto</div>
-                <div class="subtitulo">Registrá lo que gasta cada persona.</div>
+                <div class="titulo">Nuevo aporte</div>
+                <div class="subtitulo">Registrá lo que aporta cada persona.</div>
 
-                <label for="pagador">Pagador</label>
-                <select id="pagador"></select>
-
-                <label for="tipo">Tipo de gasto</label>
-                <select id="tipo"></select>
-
-                <button type="button" id="mostrarNuevoTipo" class="enlace">+ Nuevo tipo</button>
-
-                <div id="nuevoTipo" class="nuevo oculto">
-                    <input id="nuevoTipoNombre" type="text" placeholder="Nombre del tipo nuevo">
-
-                    <select id="nuevoTipoCategoria"></select>
-
-                    <input id="nuevaCategoriaNombre" type="text" placeholder="Nombre de la categoría nueva" class="oculto">
-
-                    <button type="button" id="agregarTipo">Agregar tipo</button>
-                </div>
+                <label for="integrante">Integrante</label>
+                <select id="integrante"></select>
 
                 <label for="monto">Monto</label>
                 <input id="monto" type="text" inputmode="numeric" placeholder="50.000">
@@ -75,14 +60,31 @@
                 <label for="fecha">Fecha</label>
                 <input id="fecha" type="date">
 
-                <button id="guardar">Guardar gasto</button>
+                <button id="guardar">Guardar aporte</button>
 
                 <div class="aviso" id="aviso"></div>
+
+                <div class="cuotas-admin">
+                    <div class="titulo">Cuota del mes</div>
+                    <div class="subtitulo">Definí cuánto pone cada persona ese mes. Es el objetivo que se compara en el Dashboard.</div>
+
+                    <label for="cuotaMes">Mes</label>
+                    <input id="cuotaMes" type="month">
+
+                    <label for="cuotaMonto">Monto por persona</label>
+                    <input id="cuotaMonto" type="text" inputmode="numeric" placeholder="50.000">
+
+                    <button id="guardarCuota">Guardar cuota</button>
+
+                    <div class="aviso" id="avisoCuota"></div>
+
+                    <div id="listaCuotas"></div>
+                </div>
             </div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="gastos.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
