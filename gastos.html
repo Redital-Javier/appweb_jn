@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JN | 2026</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <div class="banner">
+                <img src="banner.jpg" alt="JN 2026">
+                <div class="banner-texto">
+                    <h1>JN | 2026</h1>
+                    <p>El plan que no se negocia</p>
+                </div>
+            </div>
+
+            <nav class="tabs">
+                <a href="dashboard.html" class="tab">Resumen</a>
+                <a href="graficos.html" class="tab">Dashboard</a>
+                <a href="personas.html" class="tab">Personas</a>
+                <a href="index.html" class="tab">Aportes</a>
+                <a href="gastos.html" class="tab activa">Gastos</a>
+            </nav>
+        </header>
+
+        <div class="body">
+            <div id="login" class="oculto">
+                <div class="titulo">Acceso del tesorero</div>
+                <div class="subtitulo">Iniciá sesión para cargar movimientos. El resto puede ver todo sin entrar.</div>
+
+                <label for="email">Email</label>
+                <input id="email" type="email" placeholder="tu@correo.com">
+
+                <label for="password">Contraseña</label>
+                <input id="password" type="password" placeholder="Tu contraseña">
+
+                <button id="btnLogin">Iniciar sesión</button>
+
+                <div class="aviso" id="avisoLogin"></div>
+            </div>
+
+            <div id="carga" class="oculto">
+                <div class="sesion-barra">
+                    <span class="sesion-email" id="sesionEmail"></span>
+                    <button id="btnLogout" class="sesion-cerrar">Cerrar sesión</button>
+                </div>
+
+                <div class="titulo">Nuevo gasto</div>
+                <div class="subtitulo">Registrá lo que gasta cada persona.</div>
+
+                <label for="pagador">Pagador</label>
+                <select id="pagador"></select>
+
+                <label for="tipo">Tipo de gasto</label>
+                <select id="tipo"></select>
+
+                <button type="button" id="mostrarNuevoTipo" class="enlace">+ Nuevo tipo</button>
+
+                <div id="nuevoTipo" class="nuevo oculto">
+                    <input id="nuevoTipoNombre" type="text" placeholder="Nombre del tipo nuevo">
+
+                    <select id="nuevoTipoCategoria"></select>
+
+                    <input id="nuevaCategoriaNombre" type="text" placeholder="Nombre de la categoría nueva" class="oculto">
+
+                    <button type="button" id="agregarTipo">Agregar tipo</button>
+                </div>
+
+                <label for="monto">Monto</label>
+                <input id="monto" type="text" inputmode="numeric" placeholder="50.000">
+
+                <label for="fecha">Fecha</label>
+                <input id="fecha" type="date">
+
+                <button id="guardar">Guardar gasto</button>
+
+                <div class="aviso" id="aviso"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="gastos.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JN | 2026</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <div class="banner">
+                <img src="banner.jpg" alt="JN 2026">
+                <div class="banner-texto">
+                    <h1>JN | 2026</h1>
+                    <p>El plan que no se negocia</p>
+                </div>
+            </div>
+
+            <nav class="tabs">
+                <a href="dashboard.html" class="tab activa">Resumen</a>
+                <a href="graficos.html" class="tab">Dashboard</a>
+                <a href="personas.html" class="tab">Personas</a>
+                <a href="index.html" class="tab">Aportes</a>
+                <a href="gastos.html" class="tab">Gastos</a>
+            </nav>
+        </header>
+
+        <div class="dash">
+            <div class="kpis">
+                <div class="kpi kpi-aporte">
+                    <div class="kpi-label">Aportado</div>
+                    <div class="kpi-valor" id="aportado">—</div>
+                </div>
+                <div class="kpi kpi-gasto">
+                    <div class="kpi-label">Gastado</div>
+                    <div class="kpi-valor" id="gastado">—</div>
+                </div>
+                <div class="kpi kpi-ancho">
+                    <div class="kpi-label">Saldo</div>
+                    <div class="kpi-valor" id="saldo">—</div>
+                    <div class="kpi-nota">(Aportado − Gastado)</div>
+                </div>
+            </div>
+
+            <div class="bloque">
+                <h2>Gastos por categoría</h2>
+                <div id="categorias"></div>
+            </div>
+
+            <div class="bloque">
+                <h2>Estado de cuotas</h2>
+                <div class="cuotas-barra">
+                    <div class="cuotas-barra-aldia" id="barraAldia"></div>
+                    <div class="cuotas-barra-atrasado" id="barraAtrasado"></div>
+                </div>
+                <div class="cuotas-cards">
+                    <div class="cuota-card aldia" id="cardAldia">
+                        <div class="cuota-num" id="cuotasAldia">—</div>
+                        <div class="cuota-lbl">Personas al día</div>
+                    </div>
+                    <div class="cuota-card atrasado" id="cardAtrasado">
+                        <div class="cuota-num" id="cuotasAtrasado">—</div>
+                        <div class="cuota-lbl">Personas atrasadas</div>
+                    </div>
+                </div>
+                <div class="cuotas-hint">Tocá una tarjeta para ver quiénes son</div>
+                <div class="cuotas-detalle" id="detalleCuotas"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

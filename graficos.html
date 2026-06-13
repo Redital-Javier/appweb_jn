@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JN | 2026</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <div class="banner">
+                <img src="banner.jpg" alt="JN 2026">
+                <div class="banner-texto">
+                    <h1>JN | 2026</h1>
+                    <p>El plan que no se negocia</p>
+                </div>
+            </div>
+
+            <nav class="tabs">
+                <a href="dashboard.html" class="tab">Resumen</a>
+                <a href="graficos.html" class="tab activa">Dashboard</a>
+                <a href="personas.html" class="tab">Personas</a>
+                <a href="index.html" class="tab">Aportes</a>
+                <a href="gastos.html" class="tab">Gastos</a>
+            </nav>
+        </header>
+
+        <div class="dash">
+            <div class="bloque">
+                <h2>Aportado vs Gastado</h2>
+                <div class="leyenda">
+                    <span class="leyenda-item"><span class="leyenda-punto" style="background:#2FD6C0"></span>Aportado</span>
+                    <span class="leyenda-item"><span class="leyenda-punto" style="background:#F4566B"></span>Gastado</span>
+                </div>
+                <div class="grafico-caja"><canvas id="gAporteGasto"></canvas></div>
+            </div>
+
+            <div class="bloque">
+                <h2>Objetivo vs Alcanzado</h2>
+                <div class="leyenda">
+                    <span class="leyenda-item"><span class="leyenda-punto" style="background:#2FD6C0"></span>Alcanzado</span>
+                    <span class="leyenda-item"><span class="leyenda-anillo"></span>Objetivo</span>
+                </div>
+                <div class="grafico-caja lista"><canvas id="gObjetivo"></canvas></div>
+            </div>
+
+            <div class="bloque">
+                <h2>Aportes por persona</h2>
+                <div id="aportePersona"></div>
+            </div>
+
+            <div class="bloque">
+                <h2>Gastos por categoría</h2>
+                <div id="categorias"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+    <script src="graficos.js"></script>
+</body>
+</html>

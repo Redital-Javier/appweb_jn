@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JN | 2026</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <div class="banner">
+                <img src="banner.jpg" alt="JN 2026">
+                <div class="banner-texto">
+                    <h1>JN | 2026</h1>
+                    <p>El plan que no se negocia</p>
+                </div>
+            </div>
+
+            <nav class="tabs">
+                <a href="dashboard.html" class="tab">Resumen</a>
+                <a href="graficos.html" class="tab">Dashboard</a>
+                <a href="personas.html" class="tab activa">Personas</a>
+                <a href="index.html" class="tab">Aportes</a>
+                <a href="gastos.html" class="tab">Gastos</a>
+            </nav>
+        </header>
+
+        <div class="selector">
+            <div class="titulo">Detalle por persona</div>
+            <div class="subtitulo">Aportes, gastos y total de cada integrante</div>
+
+            <label for="persona">Seleccioná una persona</label>
+            <select id="persona"></select>
+        </div>
+
+        <div class="contenido-aportes" id="contenido"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="personas.js"></script>
+</body>
+</html>

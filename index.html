@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JN | 2026</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <div class="banner">
+                <img src="banner.jpg" alt="JN 2026">
+                <div class="banner-texto">
+                    <h1>JN | 2026</h1>
+                    <p>El plan que no se negocia</p>
+                </div>
+            </div>
+
+            <nav class="tabs">
+                <a href="dashboard.html" class="tab">Resumen</a>
+                <a href="graficos.html" class="tab">Dashboard</a>
+                <a href="personas.html" class="tab">Personas</a>
+                <a href="index.html" class="tab activa">Aportes</a>
+                <a href="gastos.html" class="tab">Gastos</a>
+            </nav>
+        </header>
+
+        <div class="body">
+            <div id="login" class="oculto">
+                <div class="titulo">Acceso del tesorero</div>
+                <div class="subtitulo">Iniciá sesión para cargar movimientos. El resto puede ver todo sin entrar.</div>
+
+                <label for="email">Email</label>
+                <input id="email" type="email" placeholder="tu@correo.com">
+
+                <label for="password">Contraseña</label>
+                <input id="password" type="password" placeholder="Tu contraseña">
+
+                <button id="btnLogin">Iniciar sesión</button>
+
+                <div class="aviso" id="avisoLogin"></div>
+            </div>
+
+            <div id="carga" class="oculto">
+                <div class="sesion-barra">
+                    <span class="sesion-email" id="sesionEmail"></span>
+                    <button id="btnLogout" class="sesion-cerrar">Cerrar sesión</button>
+                </div>
+
+                <div class="titulo">Nuevo aporte</div>
+                <div class="subtitulo">Registrá lo que aporta cada persona.</div>
+
+                <label for="integrante">Integrante</label>
+                <select id="integrante"></select>
+
+                <label for="monto">Monto</label>
+                <input id="monto" type="text" inputmode="numeric" placeholder="50.000">
+
+                <label for="fecha">Fecha</label>
+                <input id="fecha" type="date">
+
+                <button id="guardar">Guardar aporte</button>
+
+                <div class="aviso" id="aviso"></div>
+
+                <div class="cuotas-admin">
+                    <div class="titulo">Cuota del mes</div>
+                    <div class="subtitulo">Definí cuánto pone cada persona ese mes. Es el objetivo que se compara en el Dashboard.</div>
+
+                    <label for="cuotaMes">Mes</label>
+                    <input id="cuotaMes" type="month">
+
+                    <label for="cuotaMonto">Monto por persona</label>
+                    <input id="cuotaMonto" type="text" inputmode="numeric" placeholder="50.000">
+
+                    <button id="guardarCuota">Guardar cuota</button>
+
+                    <div class="aviso" id="avisoCuota"></div>
+
+                    <div id="listaCuotas"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="app.js"></script>
+</body>
+</html>
