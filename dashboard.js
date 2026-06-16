@@ -29,7 +29,7 @@ async function cargar() {
 
     const { data: gastos, error: e2 } = await cliente
         .from('gastos')
-        .select('monto, tipos_gasto(nombre, categorias(nombre))');
+        .select('pagador_id, monto, origen, tipos_gasto(nombre, categorias(nombre))');
     if (e2) { console.error(e2); return; }
 
     const { data: aportes, error: e3 } = await cliente
@@ -37,25 +37,74 @@ async function cargar() {
         .select('integrante_id, monto, periodo');
     if (e3) { console.error(e3); return; }
 
-    dibujarKpis(resumen);
+    const { data: integrantes, error: e4 } = await cliente
+        .from('integrantes')
+        .select('id, nombre');
+    if (e4) { console.error(e4); return; }
+
+    dibujarKpis(aportes, gastos);
+    dibujarDeudas(gastos, integrantes);
     dibujarCategorias(gastos);
     dibujarCuotas(resumen, aportes);
 }
 
-function dibujarKpis(resumen) {
+function dibujarKpis(aportes, gastos) {
     let totalAportado = 0;
-    let totalGastado = 0;
-    resumen.forEach(function (r) {
-        totalAportado += Number(r.aportado);
-        totalGastado += Number(r.gastado);
+    aportes.forEach(function (a) {
+        totalAportado += Number(a.monto);
     });
-    const saldo = totalAportado - totalGastado;
+
+    let totalGastado = 0;
+    let gastadoPozo = 0;
+    gastos.forEach(function (g) {
+        totalGastado += Number(g.monto);
+        if (g.origen === 'pozo') {
+            gastadoPozo += Number(g.monto);
+        }
+    });
+
+    const saldo = totalAportado - gastadoPozo;
 
     document.getElementById('aportado').textContent = pesos(totalAportado);
     document.getElementById('gastado').textContent = pesos(totalGastado);
     const elSaldo = document.getElementById('saldo');
     elSaldo.textContent = pesos(saldo);
     elSaldo.classList.toggle('negativo', saldo < 0);
+}
+
+function dibujarDeudas(gastos, integrantes) {
+    const porPersona = {};
+    gastos.forEach(function (g) {
+        if (g.origen === 'bolsillo') {
+            porPersona[g.pagador_id] = (porPersona[g.pagador_id] || 0) + Number(g.monto);
+        }
+    });
+
+    const nombrePorId = {};
+    integrantes.forEach(function (i) {
+        nombrePorId[i.id] = i.nombre;
+    });
+
+    const filas = Object.keys(porPersona).map(function (id) {
+        return { nombre: nombrePorId[id], monto: porPersona[id] };
+    });
+    filas.sort(function (a, b) { return b.monto - a.monto; });
+
+    const contenedor = document.getElementById('deudas');
+    if (filas.length === 0) {
+        contenedor.innerHTML = '<div class="vacio">Nadie puso de su bolsillo.</div>';
+        return;
+    }
+
+    let html = '';
+    filas.forEach(function (f) {
+        html +=
+            '<div class="deuda-item">' +
+                '<span class="deuda-nombre">' + f.nombre + '</span>' +
+                '<span class="deuda-monto">' + pesos(f.monto) + '</span>' +
+            '</div>';
+    });
+    contenedor.innerHTML = html;
 }
 
 function dibujarCategorias(gastos) {

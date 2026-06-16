@@ -6,7 +6,7 @@
     <title>JN | 2026</title>
     <link rel="stylesheet" href="estilos.css">
 </head>
-<body>
+<body class="pagina-gastos">
     <div class="wrap">
         <header>
             <div class="banner">
@@ -72,12 +72,24 @@
                 <label for="monto">Monto</label>
                 <input id="monto" type="text" inputmode="numeric" placeholder="50.000">
 
+                <label for="origen">¿De dónde sale la plata?</label>
+                <select id="origen">
+                    <option value="pozo">Pozo</option>
+                    <option value="bolsillo">Bolsillo</option>
+                </select>
+
                 <label for="fecha">Fecha</label>
                 <input id="fecha" type="date">
 
                 <button id="guardar">Guardar gasto</button>
 
                 <div class="aviso" id="aviso"></div>
+
+                <div class="gastos-lista-cont">
+                    <div class="titulo">Gastos cargados</div>
+                    <div class="subtitulo">Elegí la opción que corresponda para pagarle a la persona.</div>
+                    <div id="listaGastos"></div>
+                </div>
             </div>
         </div>
     </div>

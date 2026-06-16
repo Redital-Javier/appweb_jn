@@ -130,9 +130,11 @@ header::after {
 }
 
 .body label {
+    display: block;
     font-size: 13px;
     font-weight: 600;
     color: var(--tinta);
+    margin-top: 4px;
     margin-bottom: 6px;
 }
 
@@ -1239,4 +1241,199 @@ header::after {
     border: 2px solid #AEB9C7;
     background: transparent;
     flex-shrink: 0;
+}
+
+.pagina-gastos .tab.activa {
+    color: var(--rojo);
+    border-bottom-color: var(--rojo);
+    box-shadow: 0 6px 14px -8px var(--rojo);
+}
+
+.pagina-gastos .body select:focus,
+.pagina-gastos .body input:focus {
+    border-color: var(--rojo);
+    box-shadow: 0 0 0 3px rgba(244, 86, 107, 0.15);
+}
+
+.pagina-gastos .enlace {
+    color: var(--rojo);
+}
+
+.pagina-gastos #guardar {
+    background: linear-gradient(135deg, var(--rojo), #C03A4D);
+    color: #2A0A0F;
+}
+
+#guardarCuota {
+    align-self: flex-start;
+}
+
+.deuda-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 14px;
+    margin-bottom: 8px;
+    border: 1px solid var(--borde);
+    border-radius: 11px;
+    background: var(--card-2);
+}
+
+.deuda-item:last-child {
+    margin-bottom: 0;
+}
+
+.deuda-nombre {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--tinta);
+}
+
+.deuda-monto {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--naranja);
+}
+
+.gastos-lista-cont {
+    border-top: 1px solid var(--borde);
+    margin-top: 24px;
+    padding-top: 20px;
+}
+
+.gasto-fila {
+    padding: 12px 14px;
+    margin-bottom: 8px;
+    border: 1px solid var(--borde);
+    border-radius: 11px;
+    background: var(--card-2);
+}
+
+.gasto-fila-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.gasto-fila-tipo {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--tinta);
+}
+
+.gasto-fila-meta {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 2px;
+}
+
+.origen-tag {
+    border: none;
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-family: var(--fuente);
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.origen-pozo {
+    background: rgba(47, 214, 192, 0.15);
+    color: var(--cyan);
+}
+
+.origen-bolsillo {
+    background: rgba(240, 150, 74, 0.15);
+    color: var(--naranja);
+}
+
+.origen-confirm {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--borde);
+}
+
+.origen-confirm-txt {
+    font-size: 12px;
+    color: var(--muted);
+    margin-right: auto;
+}
+
+.origen-si,
+.origen-no {
+    border: none;
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-family: var(--fuente);
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.origen-si {
+    background: var(--cyan);
+    color: #06231F;
+}
+
+.origen-no {
+    background: rgba(137, 151, 168, 0.18);
+    color: var(--muted);
+}
+
+.gasto-fila-acc {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.saldar-btn {
+    border: none;
+    border-radius: 999px;
+    padding: 8px 14px;
+    background: var(--naranja);
+    color: #2A1402;
+    font-family: var(--fuente);
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.saldar-btn:hover {
+    box-shadow: 0 0 14px rgba(240, 150, 74, 0.4);
+}
+
+.saldar-confirm {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--borde);
+}
+
+.saldar-btn {
+    border: none;
+    border-radius: 999px;
+    padding: 8px 14px;
+    background: var(--naranja);
+    color: #2A1402;
+    font-family: var(--fuente);
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.saldar-btn:hover {
+    box-shadow: 0 0 14px rgba(240, 150, 74, 0.4);
+}
+
+.gasto-fila-meta {
+    margin-top: 5px;
+    line-height: 1.5;
 }

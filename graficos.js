@@ -91,7 +91,7 @@ async function cargar() {
 
     const { data: gastos, error: e3 } = await cliente
         .from('gastos')
-        .select('monto, fecha, tipos_gasto(nombre, categorias(nombre))');
+        .select('monto, fecha, origen, tipos_gasto(nombre, categorias(nombre))');
     if (e3) { console.error(e3); return; }
 
     const { data: cuotas, error: e4 } = await cliente
@@ -120,6 +120,9 @@ function graficoAportadoGastado(aportes, gastos) {
     });
 
     gastos.forEach(function (g) {
+        if (g.origen !== 'pozo') {
+            return;
+        }
         const clave = g.fecha.substring(0, 7);
         if (!meses[clave]) { meses[clave] = { aportado: 0, gastado: 0 }; }
         meses[clave].gastado += Number(g.monto);
